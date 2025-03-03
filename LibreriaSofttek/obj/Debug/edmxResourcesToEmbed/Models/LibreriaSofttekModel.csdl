@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibreriaSofttekModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Autor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CiudadNacimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CorreoElectronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Libro" Relationship="Self.FK__Libro__IdAutor__3F466844" FromRole="Autor" ToRole="Libro" />
+  </EntityType>
+  <EntityType Name="Libro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ano" Type="Int32" Nullable="false" />
+    <Property Name="Genero" Type="Int32" Nullable="false" />
+    <Property Name="NumeroPaginas" Type="Int32" Nullable="false" />
+    <Property Name="IdAutor" Type="Int64" Nullable="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Autor" Relationship="Self.FK__Libro__IdAutor__3F466844" FromRole="Libro" ToRole="Autor" />
+  </EntityType>
+  <Association Name="FK__Libro__IdAutor__3F466844">
+    <End Role="Autor" Type="Self.Autor" Multiplicity="1" />
+    <End Role="Libro" Type="Self.Libro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Autor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Libro">
+        <PropertyRef Name="IdAutor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LibreriaSofttekContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Autor" EntityType="Self.Autor" />
+    <EntitySet Name="Libro" EntityType="Self.Libro" />
+    <AssociationSet Name="FK__Libro__IdAutor__3F466844" Association="Self.FK__Libro__IdAutor__3F466844">
+      <End Role="Autor" EntitySet="Autor" />
+      <End Role="Libro" EntitySet="Libro" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,25 @@
+﻿@using LibreriaSofttek.Models.Enums
+@using LibreriaSofttek.Helpers
+@model LibreriaSofttek.DTOs.LibroDetailDTO
+
+<div class="container-fluid">
+    <h2 class="mb-3">Información del libro</h2>
+    <div class="row w-100 mb-3">
+        <div class="col-md-12 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>Título:</strong> @Model.Titulo</p>
+                    <p><strong>Año de publicación:</strong> @Model.Ano.ToString()</p>
+                    <p><strong>Género literario:</strong> @(((GeneroEnum)Model.Genero).GetDisplayName())</p>
+                    <p><strong>Número de páginas:</strong> @Model.NumeroPaginas.ToString()</p>
+                    <p><strong>Nombre del autor:</strong> @Model.NombreAutor</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row w-100 mb-3">
+        <div class="d-flex justify-content-end">
+            @Html.ActionLink("Volver al índice", "Index", "Libro", null, new { @class = "btn btn-outline-secondary ms-2" })
+        </div>
+    </div>
+</div>

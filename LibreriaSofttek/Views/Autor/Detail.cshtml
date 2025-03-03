@@ -1,0 +1,42 @@
+﻿@model LibreriaSofttek.DTOs.AutorDetailDTO
+
+<div class="container-fluid">
+    <h2 class="mb-3">Información del autor</h2>
+    <div class="row w-100 mb-3">
+        <div class="col-md-12 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>Nombre completo:</strong> @Model.NombreCompleto</p>
+                    <p><strong>Fecha de nacimiento:</strong> @Model.FechaNacimiento.ToString("yyyy-MM-dd")</p>
+                    <p><strong>Ciudad de procedencia:</strong> @Model.CiudadNacimiento</p>
+                    <p><strong>Correo electrónico:</strong> @Model.CorreoElectronico</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="mb-3">Libros del autor</h2>
+    <div class="row w-100 mb-3">
+        <div class="col-md-12 mb-3">
+            @if (Model.Libros.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var libro in Model.Libros)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>@libro.Titulo (@libro.Ano.ToString())</span>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>No hay libros registrados para este autor.</p>
+            }
+        </div>
+    </div>
+    <div class="row w-100 mb-3">
+        <div class="d-flex justify-content-end">
+            @Html.ActionLink("Volver al índice", "Index", "Autor", null, new { @class = "btn btn-outline-secondary ms-2" })
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@model LibreriaSofttek.DTOs.AutorDTO
+
+<div class="container-fluid">
+    <h2 class="mb-3">Editar un autor</h2>
+
+    @using (Html.BeginForm("Update", "Autor", FormMethod.Post, new { @class = "needs-validation", autocomplete = "off", novalidate = "true" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="row w-100 mb-3">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">@Html.LabelFor(m => m.NombreCompleto) <strong>*</strong></label>
+                @Html.TextBoxFor(m => m.NombreCompleto, new { @class = "form-control", placeholder = "Ingrese el nombre completo" })
+                @Html.ValidationMessageFor(m => m.NombreCompleto, "", new { @class = "text-danger text-custom-validation" })
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>@Html.LabelFor(m => m.FechaNacimiento) <strong>*</strong></label>
+                @Html.TextBoxFor(m => m.FechaNacimiento, new { @class = "form-control", type = "date", Value = Model.FechaNacimiento.ToString("yyyy-MM-dd") })
+                @Html.ValidationMessageFor(m => m.FechaNacimiento, "", new { @class = "text-danger text-custom-validation" })
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>@Html.LabelFor(m => m.CiudadNacimiento) <strong>*</strong></label>
+                @Html.TextBoxFor(m => m.CiudadNacimiento, new { @class = "form-control", placeholder = "Ingrese la ciudad de procedencia" })
+                @Html.ValidationMessageFor(m => m.CiudadNacimiento, "", new { @class = "text-danger text-custom-validation" })
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>@Html.LabelFor(m => m.CorreoElectronico) <strong>*</strong></label>
+                @Html.TextBoxFor(m => m.CorreoElectronico, new { @class = "form-control", type = "email", placeholder = "ejemplo@correo.com" })
+                @Html.ValidationMessageFor(m => m.CorreoElectronico, "", new { @class = "text-danger text-custom-validation" })
+            </div>
+        </div>
+        <div class="row w-100 mb-3">
+            <div class="d-flex justify-content-end">
+                @Html.ActionLink("Volver al índice", "Index", "Autor", null, new { @class = "btn btn-outline-secondary ms-2 mb-2" })
+                <button type="submit" class="btn btn-outline-primary ms-2 mb-2">Guardar</button>
+            </div>
+        </div>
+    }
+</div>

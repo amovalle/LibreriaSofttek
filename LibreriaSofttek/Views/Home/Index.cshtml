@@ -1,0 +1,27 @@
+﻿<main>
+    <section class="row mb-3" aria-labelledby="aspnetTitle">
+        <h1 id="title">LibreriaSofttek</h1>
+        <p class="lead">Esta es una prueba técnica para Softtek, desarrollada por la aspirante Ana Ovalle.</p>
+    </section>
+    <section class="row mb-3" aria-labelledby="aspnetTitle">
+        <div class="col-md-4 mb-3">
+            <h3>Sobre la aplicación</h3>
+            <p class="lead">La aplicación cuenta con dos módulos: Libro y Autor. Tener en cuenta que para el registro de libros, es necesaria la existencia de al menos un autor.</p>
+            <p class="lead"><strong>Libro</strong> cuenta con los campos: Titulo, Año, Genero, Número de páginas y Autor.</p>
+            <p class="lead"><strong>Autor</strong> cuenta con los campos: Nombre completo, Fecha de nacimiento, Ciudad de procedencia y Correo electrónico.</p>
+        </div>
+        <div class="col-md-4 mb-3">
+            <h3>Reglas de negocio</h3>
+            <p class="lead">Se garantiza la integridad de la información. Considerando uno de tantos detalles, se realizan eliminaciones lógicas y no físicas de registros en base de datos, y con base a ello se realizan consultas y gestiones. El código para eliminar físicamente un registro se encuentra comentado en los servicios <strong>AutorService.cs</strong> y <strong>LibroService.cs.</strong></p>
+            <p class="lead">Se definen todos los campos marcados con asterisco como obligatorios, por lo que no se permite el registro o modificación sin contar con formulario sdebidamente diligenciados.</p>
+            <p class="lead">Se controla el número de libros permitidos, por lo que no se permite el ingreso de un nuevo libro una vez superado el tope (10). La cantidad se modifica en la <strong>key="MaxLibrosPermitidos"</strong> dentro del Web.config principal.</p>
+            <p class="lead">Se controla la asignación del autor de un libro, de tal manera que solo puede ser seleccionado un autor registrado. El código para el ingreso manual de un autor se encuentra comentado en el <strong>Create.cshtml</strong> y <strong>Update.cshtml</strong> para la gestión de libros.</p>
+        </div>
+        <div class="col-md-4 mb-3">
+            <h3>Aspectos técnicos</h3>
+            <p class="lead">Estructura de paquetes: Entidades, DTOs, Interfaces, Servicios, Controladores, Excepciones.</p>
+            <p class="lead">Inyección de dependencias y uso de modelos implementado.</p>
+            <p class="lead">Buenas prácticas de desarrollo implementadas.</p>
+        </div>
+    </section>
+</main>

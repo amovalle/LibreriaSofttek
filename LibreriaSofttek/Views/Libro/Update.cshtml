@@ -1,0 +1,51 @@
+﻿@model LibreriaSofttek.DTOs.LibroDTO
+
+<div class="container-fluid">
+    <h2 class="mb-3">Editar un libro</h2>
+
+    @using (Html.BeginForm("Update", "Libro", FormMethod.Post, new { @class = "needs-validation", autocomplete = "off", novalidate = "true" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="row w-100 mb-3">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">@Html.LabelFor(m => m.Titulo) <strong>*</strong></label>
+                @Html.TextBoxFor(m => m.Titulo, new { @class = "form-control", placeholder = "Ingrese el título" })
+                @Html.ValidationMessageFor(m => m.Titulo, "", new { @class = "text-danger text-custom-validation" })
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>@Html.LabelFor(m => m.Ano) <strong>*</strong></label>
+                @Html.DropDownListFor(m => m.Ano, new SelectList(ViewBag.Anos), "Seleccione un año de publicación", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Ano, "", new { @class = "text-danger text-custom-validation" })
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>@Html.LabelFor(m => m.Genero) <strong>*</strong></label>
+                @Html.DropDownListFor(m => m.Genero, ViewBag.Generos as List<SelectListItem>, "Seleccione un género literario", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Genero, "", new { @class = "text-danger text-custom-validation" })
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>@Html.LabelFor(m => m.NumeroPaginas) <strong>*</strong></label>
+                @Html.TextBoxFor(m => m.NumeroPaginas, new { @class = "form-control", type = "number", min = "1", placeholder = "Ingrese el número de páginas" })
+                @Html.ValidationMessageFor(m => m.NumeroPaginas, "", new { @class = "text-danger text-custom-validation" })
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>@Html.LabelFor(m => m.IdAutor) <strong>*</strong></label>
+                @Html.DropDownListFor(m => m.IdAutor, (SelectList)ViewBag.Autores, "Seleccione un autor", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.IdAutor, "", new { @class = "text-danger text-custom-validation" })
+            </div>
+            @*Opción para ingreso manual del IdAutor, comentada para dejar evidencia en prueba técnica*@
+            @*<div class="col-md-6 mb-3">
+                    <label>@Html.LabelFor(m => m.IdAutor) <strong>*</strong></label>
+                    @Html.TextBoxFor(m => m.IdAutor, new { @class = "form-control", type = "number", min = "1", placeholder = "Ingrese el Id del autor" })
+                    @Html.ValidationMessageFor(m => m.IdAutor, "", new { @class = "text-danger text-custom-validation" })
+                </div>*@
+        </div>
+        <div class="row w-100 mb-3">
+            <div class="d-flex justify-content-end">
+                @Html.ActionLink("Volver al índice", "Index", "Libro", null, new { @class = "btn btn-outline-secondary ms-2 mb-2" })
+                <button type="submit" class="btn btn-outline-primary ms-2 mb-2">Guardar</button>
+            </div>
+        </div>
+    }
+</div>

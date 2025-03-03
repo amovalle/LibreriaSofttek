@@ -1,0 +1,12 @@
+﻿.form-control {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.text-custom-validation {
+    font-size: 0.8rem;
+}
+
+#toast-container {
+    margin-top: 50px !important;
+}

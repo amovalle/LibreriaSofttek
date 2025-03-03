@@ -1,0 +1,46 @@
+﻿@model List<LibreriaSofttek.DTOs.AutorDTO>
+
+<div class="container-fluid">
+    <div class="row w-100 mb-3">
+        <div class="col-md-12 mb-3">
+            <h2 class="mb-3">Lista de autores</h2>
+            @if (Model.Count() > 0)
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre completo</th>
+                            <th scope="col">Correo electrónico</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var autor in Model)
+                        {
+                            <tr>
+                                <td scope="row">@autor.NombreCompleto</td>
+                                <td scope="row">@autor.CorreoElectronico</td>
+                                <td scope="row">
+                                    @Html.ActionLink("Ver detalle", "Detail", new { id = autor.Id }, new { @class = "btn btn-outline-primary btn-sm ms-2 mb-2" })
+                                    @Html.ActionLink("Editar", "Update", new { id = autor.Id }, new { @class = "btn btn-outline-primary btn-sm ms-2 mb-2" })
+                                    <button class="btn btn-outline-danger btn-sm btn-delete ms-2 mb-2" data-id="@autor.Id">Eliminar</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No hay autores registrados.</p>
+            }
+        </div>
+    </div>
+    <div class="row w-100 mb-3">
+        <div class="d-flex justify-content-end">
+            <a href="@Url.Action("Create", "Autor")" class="btn btn-outline-primary">Crear</a>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Autor/Index.js"></script>
