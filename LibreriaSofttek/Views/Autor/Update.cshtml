@@ -15,17 +15,17 @@
                 @Html.ValidationMessageFor(m => m.NombreCompleto, "", new { @class = "text-danger text-custom-validation" })
             </div>
             <div class="col-md-6 mb-3">
-                <label>@Html.LabelFor(m => m.FechaNacimiento) <strong>*</strong></label>
+                <label class="form-label">@Html.LabelFor(m => m.FechaNacimiento) <strong>*</strong></label>
                 @Html.TextBoxFor(m => m.FechaNacimiento, new { @class = "form-control", type = "date", Value = Model.FechaNacimiento.ToString("yyyy-MM-dd") })
                 @Html.ValidationMessageFor(m => m.FechaNacimiento, "", new { @class = "text-danger text-custom-validation" })
             </div>
             <div class="col-md-6 mb-3">
-                <label>@Html.LabelFor(m => m.CiudadNacimiento) <strong>*</strong></label>
+                <label class="form-label">@Html.LabelFor(m => m.CiudadNacimiento) <strong>*</strong></label>
                 @Html.TextBoxFor(m => m.CiudadNacimiento, new { @class = "form-control", placeholder = "Ingrese la ciudad de procedencia" })
                 @Html.ValidationMessageFor(m => m.CiudadNacimiento, "", new { @class = "text-danger text-custom-validation" })
             </div>
             <div class="col-md-6 mb-3">
-                <label>@Html.LabelFor(m => m.CorreoElectronico) <strong>*</strong></label>
+                <label class="form-label">@Html.LabelFor(m => m.CorreoElectronico) <strong>*</strong></label>
                 @Html.TextBoxFor(m => m.CorreoElectronico, new { @class = "form-control", type = "email", placeholder = "ejemplo@correo.com" })
                 @Html.ValidationMessageFor(m => m.CorreoElectronico, "", new { @class = "text-danger text-custom-validation" })
             </div>
